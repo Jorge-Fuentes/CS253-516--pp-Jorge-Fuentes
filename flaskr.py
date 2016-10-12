@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Flaskr
+    Flaskr Plus
     ~~~~~~
 
     A microblog example application written as Flask tutorial with
