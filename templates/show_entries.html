@@ -13,11 +13,19 @@
       </dl>
     </form>
   {% endif %}
+  <h2>Categories</h2>
+  <ul class="categories">
+    <li><a href="?">[all]</a></li>
+  {% for category in categories %}
+    <li><a href="?category={{ category.category }}">{{ category.category }}</a></li>
+  {% endfor %}
+  </ul>
+  <h2>Posts</h2>
   <ul class="entries">
   {% for entry in entries %}
     <li>
-        <h2>{{ entry.title }}</h2>
-        <b>Category:</b> {{ entry.category }}
+        <h3>{{ entry.title }}</h3>
+        <i>[{{ entry.category }}]</i>
         <p>
         {{ entry.text|safe }}
         </p>
