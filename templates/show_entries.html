@@ -5,6 +5,8 @@
       <dl>
         <dt>Title:
         <dd><input type="text" size="30" name="title">
+        <dt>Category:
+        <dd><input type="text" size="30" name="category">
         <dt>Text:
         <dd><textarea name="text" rows="5" cols="40"></textarea>
         <dd><input type="submit" value="Share">
@@ -13,7 +15,13 @@
   {% endif %}
   <ul class="entries">
   {% for entry in entries %}
-    <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}</li>
+    <li>
+        <h2>{{ entry.title }}</h2>
+        <b>Category:</b> {{ entry.category }}
+        <p>
+        {{ entry.text|safe }}
+        </p>
+    </li>
   {% else %}
     <li><em>Unbelievable.  No entries here so far</em></li>
   {% endfor %}
