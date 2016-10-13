@@ -13,8 +13,7 @@
 import os
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash
-
+    render_template, flash
 
 # create our little application :)
 app = Flask(__name__)
@@ -73,13 +72,14 @@ def show_entries():
     db = get_db()
 
     if "category" in request.args:
-        cur = db.execute('select title, category, text from entries where category = ? order by id desc', [request.args["category"]])
+        cur = db.execute('SELECT title, category, text FROM entries WHERE category = ? ORDER BY id DESC',
+                         [request.args["category"]])
         entries = cur.fetchall()
     else:
-        cur = db.execute('select title, category, text from entries order by id desc')
+        cur = db.execute('SELECT title, category, text FROM entries ORDER BY id DESC')
         entries = cur.fetchall()
 
-    cur = db.execute('select distinct category from entries order by category asc')
+    cur = db.execute('SELECT DISTINCT category FROM entries ORDER BY category ASC')
     categories = cur.fetchall()
 
     return render_template('show_entries.html', entries=entries, categories=categories)
@@ -90,7 +90,7 @@ def add_entry():
     if not session.get('logged_in'):
         abort(401)
     db = get_db()
-    db.execute('insert into entries (title, category, text) values (?, ?, ?)',
+    db.execute('INSERT INTO entries (title, category, text) VALUES (?, ?, ?)',
                [request.form['title'], request.form['category'], request.form['text']])
     db.commit()
     flash('New entry was successfully posted')
