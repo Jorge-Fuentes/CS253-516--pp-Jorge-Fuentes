@@ -1,38 +1,13 @@
-                         / Flaskr /
+                    / Flaskr Plus /
 
-                 a minimal blog application
+        a slightly less minimal blog application
 
 
-    ~ What is Flaskr?
+Flaskr is a demonstration app from the Flask codebase.
+Flaskr Plus is a modification of it that adds a few simple
+features such as post categories and deletion.
 
-      A sqlite powered thumble blog application
+Authors:
+  Originally written by the Flask team (see AUTHORS)
+  Modified by Mark Liffiton / CS 253, Oct 2016.
 
-    ~ How do I use it?
-
-      1. edit the configuration in the flaskr.py file or
-         export an FLASKR_SETTINGS environment variable
-         pointing to a configuration file.
-
-      2. install the app from the root of the project directory
-
-         pip install --editable .
-
-      3. Instruct flask to use the right application
-
-         export FLASK_APP=flaskr
-
-      4. initialize the database with this command:
-
-         flask initdb
-
-      5. now you can run flaskr:
-
-         flask run
-
-         the application will greet you on
-         http://localhost:5000/
-
-    ~ Is it tested?
-
-      You betcha.  Run `python setup.py test` to see
-      the tests pass.
