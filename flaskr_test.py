@@ -28,6 +28,15 @@ class FlaskrTestCase(unittest.TestCase):
     def logout(self):
     return self.app.get('/logout', follow_redirects=True)
 
+    def test_login_logout(self):
+        rv = self.login('admin', 'default')
+        assert 'You were logged in' in rv.data
+        rv = self.logout()
+        assert 'You were logged out' in rv.data
+        rv = self.login('adminx', 'default')
+        assert 'Invalid username' in rv.data
+        rv = self.login('admin', 'defaultx')
+        assert 'Invalid password' in rv.data
     
 
 
