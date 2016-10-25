@@ -47,6 +47,11 @@ class FlaskrTestCase(unittest.TestCase):
         assert 'No entries here so far' not in rv.data
         assert '&lt;Hello&gt;' in rv.data
         assert '<strong>HTML</strong> allowed here' in rv.data
+        
+    def test_delete_message(self):
+        rv = self.app.get('/delete/1')
+        data = json.loads(rv.data)
+        self.assertEqual(data['status'], 1)
 
 
 if __name__ == '__main__':
