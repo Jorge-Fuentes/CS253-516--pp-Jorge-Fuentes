@@ -52,6 +52,17 @@ class FlaskrTestCase(unittest.TestCase):
         rv = self.app.get('/delete/1')
         data = json.loads(rv.data)
         self.assertEqual(data['status'], 1)
+        
+    def test_filter_posts(self):
+        self.app.config["EXCEPTIONAL_POST_FILTER"] = ["Host"]
+        Exceptional(self.app)
+
+        with self.app.test_client() as client:
+            client.get("/error")
+            data = json.loads(g.exceptional)
+            request = data["Category"]
+            headers = request["Title"]
+            assert headers["Host"] == "[FILTERED]"
 
 
 if __name__ == '__main__':
