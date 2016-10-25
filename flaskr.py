@@ -107,6 +107,22 @@ def delete_entry():
     flash('Entry deleted')
     return redirect(url_for('show_entries'))
 
+@app.route('/editpost/<int:id>', methods=['GET', 'POST'])
+def editpost(id):
+    post = db.session.query(Post).filter(Post.id==id).first()
+
+    if request.method == 'POST':
+        title = request.form['title']
+        text = request.form['content']
+
+        post.title = title
+        post.body = content
+
+        db.session.commit()
+
+        return redirect(url_for('post', id=id))
+    else:
+        return render_template('something.html', post=post)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
