@@ -63,6 +63,7 @@ class FlaskrTestCase(unittest.TestCase):
             request = data["Category"]
             headers = request["Title"]
             assert headers["Host"] == "[FILTERED]"
+            
 
 
 if __name__ == '__main__':
