@@ -16,4 +16,6 @@ python:
 install:
   - pip install flask
   
+script:
+  -nosetests
 
